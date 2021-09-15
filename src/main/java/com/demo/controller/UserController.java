@@ -12,7 +12,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import java.util.*;
 
 
-@Api(value = "用户管理", description = "用户管理API", position = 100, protocols = "http")
+@Api(value = "用户管理", tags = "用户管理API", protocols = "http")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {

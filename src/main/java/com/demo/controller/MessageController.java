@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(value = "消息", description = "消息操作 API", position = 100, protocols = "http")
+@Api(value = "消息接口", tags = "消息操作API")
 @RestController
 @RequestMapping("/")
 public class MessageController {
