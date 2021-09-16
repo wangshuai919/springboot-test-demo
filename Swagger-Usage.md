@@ -1,4 +1,8 @@
 ## Swagger 配置和使用说明
+### 选择Swagger原因
+- 接口文档在线自动生成
+- 接口在线调试功能
+- 文档与代码可以保持同步（因为文档的方法，参数和模型紧密集成到服务端的代码）
 ### 版本：采用io.springfox，它是Swagger规范的实现，整合了SpringBoot
 ### 配置步骤：
     1. build.gradle 中增加以下依赖：
@@ -41,6 +45,7 @@
 - @ApiModel：用于响应类上，表示一个返回响应数据的信息 （这种一般用在post创建的时候，使用@RequestBody这样的场景，
 请求参数无法使用@ApiImplicitParam注解进行描述的时候）
 - @ApiModelProperty：用在属性上，描述响应类的属性
+- @ApiIgnore：该注解忽略这个API 
 
 
 ### 查看文档
