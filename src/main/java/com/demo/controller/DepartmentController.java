@@ -7,10 +7,8 @@ import com.demo.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -45,6 +43,16 @@ public class DepartmentController {
     @PostMapping("/update")
     @ResponseBody
     public ResultStatus update(HttpServletRequest request) {
+        ResultStatus resultStatus = new ResultStatus();
+        resultStatus.setCode("SUCCESS");
+        resultStatus.setMessage("成功");
+        return resultStatus;
+    }
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public ResultStatus upload(@RequestParam("file") MultipartFile file) {
+        System.out.println(file.getSize());
         ResultStatus resultStatus = new ResultStatus();
         resultStatus.setCode("SUCCESS");
         resultStatus.setMessage("成功");

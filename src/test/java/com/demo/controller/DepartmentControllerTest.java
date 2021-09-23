@@ -8,15 +8,19 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -79,7 +83,18 @@ class DepartmentControllerTest extends MockMvcBaseTest {
     }
 
     @Test
-    void shouldReturnResponse() {
+    void shouldReturnResultStatusWhenFileUpload() throws Exception {
+        InputStream inputStream = this.getClass().getResourceAsStream("/test-1.xlsx");
+        MockMultipartFile file = new MockMultipartFile("file", inputStream);
+        Map<String, String> contentTypeParams = new HashMap<>();
+        contentTypeParams.put("param1", "265001916915724");
+        MediaType mediaType = new MediaType("multipart", "form-data", contentTypeParams);
 
+        this.mockMvc.perform(multipart("/api/department/upload").file(file)
+                        .contentType(mediaType))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value("SUCCESS"))
+                .andReturn();
     }
 }
