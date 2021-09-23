@@ -4,6 +4,10 @@
 方法时，会出现类型不匹配或空指针之类的错误。
  - 示例代码：DepartmentServiceImplTest
 
-#### Controller 测试示例
- - 场景描述：通过MockMvc测试Controller的业务逻辑，MockMvc不会进行HTTP请求
+#### Controller 测试示例（一）
+ - 场景描述：通过MockMvc测试Controller的业务逻辑
  - 示例代码：HelloControllerTest
+
+#### Controller 测试示例（二）
+- 场景描述：通过MockMvc测试Controller的业务逻辑，包含文件上传、返回结果验证、mock service对象等场景
+- 示例代码：DepartmentController
