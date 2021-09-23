@@ -23,6 +23,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentRepository departmentRepository;
 
     @Override
+    public DepartmentVo save(String id, String name) {
+        DepartmentVo departmentVo = new DepartmentVo();
+        departmentVo.setDepartmentId(id);
+        departmentVo.setDepartmentName(name);
+        return departmentVo;
+    }
+
+    @Override
     public List<DepartmentVo> getDepartmentListByPage() {
         String sql = "select * from department";
         Query query = this.entityManager.createNativeQuery(sql);
