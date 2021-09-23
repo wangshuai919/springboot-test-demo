@@ -1,8 +1,10 @@
 package com.demo.service;
 
 import com.demo.model.DepartmentVo;
+import com.demo.repository.DepartmentRepository;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -17,6 +19,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
+
     @Override
     public List<DepartmentVo> getDepartmentListByPage() {
         String sql = "select * from department";
@@ -30,5 +35,10 @@ public class DepartmentServiceImpl implements DepartmentService {
             result.add(departmentVo);
         }
         return result;
+    }
+
+    @Override
+    public List<DepartmentVo> findDepartmentByName(String name) {
+        return departmentRepository.getDepartmentByName(name);
     }
 }

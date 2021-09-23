@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface DepartmentService {
    List<DepartmentVo> getDepartmentListByPage();
+
+   List<DepartmentVo> findDepartmentByName(String name);
+   
 }
