@@ -59,10 +59,17 @@ class DepartmentControllerTest extends MockMvcBaseTest {
         departmentVo.setDepartmentId("9999");
         when(departmentService.save(any(), any())).thenReturn(departmentVo);
 
+        //构造request参数
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("id","1001");
         params.add("name", "IT");
-        this.mockMvc.perform(post("/api/department/save").params(params))
+
+        //构造session参数
+        HashMap<String, Object> sessionAttr = new HashMap<String, Object>();
+        sessionAttr.put("userInfo", "Zhang");
+
+        this.mockMvc.perform(post("/api/department/save")
+                        .params(params).sessionAttrs(sessionAttr))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("/departmentList"))
