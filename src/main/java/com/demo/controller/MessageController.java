@@ -7,6 +7,7 @@ import com.demo.repository.MessageRepository;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class MessageController {
 			@ApiImplicitParam(name = "summary", value = "摘要", required = false, dataType = "String", paramType = "query"),
 	})
 	@PostMapping(value = "message")
+	@ApiIgnore
 	public Message create(Message message) {
 		System.out.println("message===="+message.toString());
 		message = this.messageRepository.save(message);

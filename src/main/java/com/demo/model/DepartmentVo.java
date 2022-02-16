@@ -1,8 +1,12 @@
 package com.demo.model;
 
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class DepartmentVo {
+    @ApiModelProperty("部门Id")
     private String departmentId;
+    @ApiModelProperty("部门名称")
     private String departmentName;
 
     public String getDepartmentId() {

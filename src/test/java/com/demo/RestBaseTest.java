@@ -6,6 +6,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
+/**
+ * 此类型测试会启动服务
+ */
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = Application.class)
 public class RestBaseTest {
 

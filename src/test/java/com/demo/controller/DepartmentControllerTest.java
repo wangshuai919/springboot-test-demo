@@ -65,7 +65,7 @@ class DepartmentControllerTest extends MockMvcBaseTest {
         params.add("name", "IT");
 
         //构造session参数
-        HashMap<String, Object> sessionAttr = new HashMap<String, Object>();
+        HashMap<String, Object> sessionAttr = new HashMap<>();
         sessionAttr.put("userInfo", "Zhang");
 
         this.mockMvc.perform(post("/api/department/save")
